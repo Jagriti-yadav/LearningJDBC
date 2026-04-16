@@ -29,10 +29,8 @@ public class SavePointEx3 {
         con.setAutoCommit(false);
         smt.executeUpdate("""
              insert into student(name,course,marks) values
-             ('Student1','MCA',90.5),
-             ('Student2','MCA',93),
-             ('Student3','MBA',95),
-             ('Student4','Btech',92)
+             ('Student7','MBA',90),
+             ('Student8','Btech',90)
              """);
         sp1 = con.setSavepoint("insert");
 
@@ -42,7 +40,7 @@ public class SavePointEx3 {
         sp2 = con.setSavepoint("update");
 
         smt.executeUpdate("""
-             update from student where name = "Student2"
+             delete from student where name =="Student2"
              """);
 
           
@@ -65,3 +63,15 @@ public class SavePointEx3 {
     }
   }
 }
+/*in mysql -
+create table studentInfo(
+id int primary key auto increment,
+name varchar(50) not null,
+photo mediumlob,
+resume mediumtext  (16 mb and large is 1 tb may be)
+);
+
+newfile craete ClobBob.java
+after addding connections
+String insertQuery
+*/
